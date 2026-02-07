@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
@@ -21,6 +20,8 @@ const Navbar: React.FC = () => {
       document.body.style.overflow = 'hidden';
       gsap.to(mobileMenuRef.current, {
         clipPath: 'circle(150% at 100% 0%)',
+        opacity: 1,
+        autoAlpha: 1,
         duration: 0.8,
         ease: "power4.inOut"
       });
@@ -34,13 +35,14 @@ const Navbar: React.FC = () => {
       document.body.style.overflow = 'auto';
       gsap.to(mobileMenuRef.current, {
         clipPath: 'circle(0% at 100% 0%)',
+        opacity: 0,
+        autoAlpha: 0,
         duration: 0.6,
         ease: "power4.inOut"
       });
     }
   }, [isMobileMenuOpen]);
 
-  // Close menu on navigation
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
@@ -56,12 +58,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 p-4 md:p-6 ${scrolled ? 'pt-2' : 'pt-4 md:pt-8'}`}>
+      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 p-4 md:p-6 ${scrolled ? 'bg-black/60 backdrop-blur-md' : 'bg-transparent'}`}>
         <nav className="max-w-[1600px] mx-auto flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="group flex items-center gap-3 bg-white/10 backdrop-blur-xl p-2 pr-6 rounded-full border border-white/10 hover:border-white/20 transition-all">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
-              <span className="material-symbols-outlined text-black text-lg md:text-xl">psychology</span>
+          <Link to="/" className="group flex items-center gap-3 bg-white/5 backdrop-blur-xl p-2 pr-6 rounded-full border border-white/10 hover:border-white/20 transition-all">
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center">
+              <span className="material-symbols-outlined text-black text-lg md:text-xl font-bold">psychology</span>
             </div>
             <div className="flex flex-col">
               <span className="font-display font-extrabold text-xs md:text-sm tracking-tighter text-white leading-none">ELEVATE</span>
@@ -69,16 +71,16 @@ const Navbar: React.FC = () => {
             </div>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center glass p-1 rounded-full px-4 gap-1">
+          {/* Center Links - Pill Design */}
+          <div className="hidden lg:flex items-center bg-white/5 backdrop-blur-md p-1.5 rounded-full px-2 border border-white/10">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-5 py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all rounded-full ${
+                className={`px-6 py-2.5 text-[10px] uppercase tracking-[0.2em] font-black transition-all rounded-full ${
                   isActive(link.path) 
-                    ? 'bg-white text-black' 
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
+                    ? 'bg-white/10 text-white' 
+                    : 'text-white/50 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -86,15 +88,14 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Right Section */}
+          {/* Right Section - Shiny Button */}
           <div className="flex items-center gap-4">
             <Link 
               to="/book" 
-              className="relative group hidden sm:block"
+              className="hidden md:block"
             >
-              <div className="absolute inset-0 bg-accent-green/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <button className="relative z-10 px-8 py-3 bg-black text-white border border-white/20 rounded-full text-[10px] uppercase tracking-[0.2em] font-black hover:border-accent-green/50 transition-all">
-                Book Session
+              <button className="shine-btn px-8 py-3.5 bg-black text-white border border-white/20 rounded-full text-[10px] uppercase tracking-[0.2em] font-black hover:border-accent-green transition-all shadow-xl">
+                Book a Discovery Session
               </button>
             </Link>
 
@@ -103,9 +104,9 @@ const Navbar: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="w-10 h-10 glass rounded-full flex flex-col items-center justify-center gap-1.5 z-[60] lg:hidden"
             >
-              <span className={`w-5 h-[2px] bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}></span>
-              <span className={`w-5 h-[2px] bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`w-5 h-[2px] bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}></span>
+              <span className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`}></span>
+              <span className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-5 h-[1.5px] bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`}></span>
             </button>
           </div>
         </nav>
@@ -114,7 +115,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu Overlay */}
       <div 
         ref={mobileMenuRef}
-        className="fixed inset-0 bg-dark-bg z-40 flex flex-col items-center justify-center mobile-menu-overlay pointer-events-none"
+        className="fixed inset-0 bg-dark-bg z-40 flex flex-col items-center justify-center mobile-menu-overlay pointer-events-none invisible opacity-0"
         style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none' }}
       >
         <div ref={menuLinksRef} className="flex flex-col items-center gap-8 text-center">
@@ -133,7 +134,7 @@ const Navbar: React.FC = () => {
             to="/book"
             className="mt-12 px-12 py-5 bg-white text-black rounded-full text-sm uppercase tracking-widest font-black"
           >
-            Apply Now
+            Book Discovery Session
           </Link>
         </div>
       </div>

@@ -37,8 +37,36 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
       .text-outline {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        -webkit-text-stroke: 1px rgba(255,255,255,0.15);
         color: transparent;
+      }
+      .shine-btn {
+        position: relative;
+        overflow: hidden;
+      }
+      .shine-btn::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(45deg);
+        transition: all 0.5s;
+        opacity: 0;
+      }
+      .shine-btn:hover::after {
+        opacity: 1;
+        left: 100%;
+        top: 100%;
       }
       ::-webkit-scrollbar {
         width: 8px;
@@ -52,9 +80,6 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #444;
-      }
-      .mobile-menu-overlay {
-        clip-path: circle(0% at 100% 0%);
       }
     </style>
     <script type="importmap">
