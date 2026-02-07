@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,6 +51,18 @@ const Home: React.FC = () => {
         y: 150,
         ease: "none"
       });
+
+      // Scroll Indicator Animation
+      if (scrollIndicatorRef.current) {
+        gsap.to(scrollIndicatorRef.current, {
+          y: 15,
+          opacity: 0.6,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }
     });
 
     return () => ctx.revert();
@@ -103,10 +116,10 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-          <div className="w-[1px] h-12 bg-white"></div>
-          <span className="text-[9px] uppercase tracking-[0.4em] font-black">Scroll to Explore</span>
+        {/* Scroll Indicator - Moved higher and increased visibility */}
+        <div ref={scrollIndicatorRef} className="absolute bottom-32 md:bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
+          <div className="w-[1px] h-12 md:h-20 bg-white/60"></div>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-black text-white/80">Scroll to Explore</span>
         </div>
       </section>
 

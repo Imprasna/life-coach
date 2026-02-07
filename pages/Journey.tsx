@@ -22,7 +22,7 @@ const Journey: React.FC = () => {
     { 
       week: "01-02", 
       title: "Deconstruction", 
-      img: "https://images.unsplash.com/photo-1518005020480-10992897c1e0?auto=format&fit=crop&q=80&w=1200",
+      img: "https://plus.unsplash.com/premium_photo-1741329311899-cf9301f7023a?q=80&w=2062&auto=format&fit=crop",
       desc: "Identifying the cognitive debt and limiting architecture that dictates your current reality." 
     },
     { 
@@ -34,19 +34,19 @@ const Journey: React.FC = () => {
     { 
       week: "06-08", 
       title: "The Flow State Integration", 
-      img: "https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=1200",
+      img: "https://plus.unsplash.com/premium_photo-1668220896934-7b3aa2276316?q=80&w=870&auto=format&fit=crop",
       desc: "Accessing peak performance states on demand without the burnout associated with traditional high-output." 
     },
     { 
       week: "09-12", 
       title: "Conscious Leadership", 
-      img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
+      img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200",
       desc: "Deploying your new evolution into your professional and personal ecosystems for maximum impact." 
     }
   ];
 
   return (
-    <div ref={containerRef} className="pt-24 md:pt-48 pb-24 md:pb-40 px-4 md:px-6 bg-dark-bg min-h-screen">
+    <div ref={containerRef} className="pt-24 md:pt-48 pb-24 md:pb-40 px-4 md:px-8 bg-dark-bg min-h-screen">
       <div className="max-w-[1600px] mx-auto">
         <header className="max-w-4xl mb-16 md:mb-32 journey-anim">
           <p className="text-accent-green text-[10px] md:text-[12px] uppercase tracking-[0.5em] font-black mb-4 md:mb-6">The Process</p>
@@ -71,7 +71,7 @@ const Journey: React.FC = () => {
                 
                 {/* Content Side */}
                 <div className={`flex-1 pl-12 lg:pl-0 w-full ${i % 2 !== 0 ? 'lg:text-left' : 'lg:text-right'}`}>
-                  <span className="text-accent-green font-display font-black text-4xl md:text-7xl opacity-40">{step.week}</span>
+                  <span className="text-accent-green font-display font-black text-4xl md:text-7xl opacity-40 leading-none">{step.week}</span>
                   <h3 className="text-2xl md:text-4xl font-display font-bold mt-2 md:mt-4 italic text-white tracking-tight uppercase leading-tight">{step.title}</h3>
                   <p className={`text-white/60 mt-4 md:mt-6 text-sm md:text-lg leading-relaxed font-medium ${i % 2 !== 0 ? 'lg:mr-auto' : 'lg:ml-auto'} max-w-md`}>
                     {step.desc}
@@ -83,14 +83,14 @@ const Journey: React.FC = () => {
 
                 {/* Image Side */}
                 <div className="flex-1 w-full pl-12 lg:pl-0">
-                  <div className="overflow-hidden rounded-[2rem] group border border-white/10 shadow-2xl aspect-[16/10] lg:aspect-[4/3] relative bg-card-zinc">
+                  <div className="overflow-hidden rounded-[2.5rem] group border border-white/10 shadow-2xl aspect-[16/10] lg:aspect-[4/3] relative bg-[#121212]">
                     <img 
                       src={step.img} 
                       alt={step.title} 
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                      className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500"></div>
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
                   </div>
                 </div>
               </div>
@@ -111,6 +111,4 @@ const Journey: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default Journey;
+}; export default Journey;
