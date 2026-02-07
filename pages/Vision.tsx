@@ -6,13 +6,18 @@ const Vision: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".vision-item", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out"
-      });
+      // Direct opacity set for immediate visibility followed by a subtle slide up
+      gsap.fromTo(".vision-item", 
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.1, 
+          ease: "power2.out",
+          clearProps: "all" 
+        }
+      );
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -49,42 +54,42 @@ const Vision: React.FC = () => {
             The Science of <br />
             <span className="text-white/40">Human Evolution.</span>
           </h1>
-          <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed max-w-3xl">
+          <p className="text-lg md:text-2xl text-white font-medium leading-relaxed max-w-3xl">
             Elevate wasn't built for the average. We created this space for those who demand more from their cognitive, emotional, and physical existence.
           </p>
         </header>
 
-        {/* Increased card visibility and uniform styling */}
+        {/* All cards now share the same solid background and opacity for perfect visibility */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-24 md:mb-40">
           {cards.map((item, i) => (
-            <div key={i} className="vision-item bg-zinc-900/90 p-8 md:p-10 rounded-[2.5rem] border border-white/10 hover:border-accent-green transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col h-full">
+            <div key={i} className="vision-item bg-[#121212] p-8 md:p-10 rounded-[2.5rem] border border-white/10 hover:border-accent-green transition-all duration-500 group relative overflow-hidden shadow-2xl flex flex-col h-full">
               <div className="relative z-10">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:bg-accent-green transition-colors duration-500 border border-white/5">
                   <span className="material-symbols-outlined text-accent-green text-3xl group-hover:text-black transition-colors duration-500">{item.icon}</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-display font-bold mb-4 italic tracking-tight text-white group-hover:text-accent-green transition-colors">{item.title}</h3>
-                <p className="text-white/70 leading-relaxed font-medium transition-colors text-sm md:text-base group-hover:text-white">{item.desc}</p>
+                <p className="text-white/70 leading-relaxed font-medium transition-colors text-sm md:text-base group-hover:text-white/90">{item.desc}</p>
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent-green/10 blur-3xl rounded-full translate-x-12 -translate-y-12 group-hover:bg-accent-green/30 transition-all duration-700"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent-green/5 blur-3xl rounded-full translate-x-12 -translate-y-12 group-hover:bg-accent-green/20 transition-all duration-700"></div>
             </div>
           ))}
         </div>
 
-        {/* Beyond Performance Section with improved visuals and responsiveness */}
+        {/* Beyond Performance Section with updated high-impact image and layout */}
         <section className="vision-item rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative min-h-[500px] md:min-h-[750px] flex items-center p-8 md:p-24 shadow-2xl border border-white/10 group">
           <div className="absolute inset-0">
             <img 
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000" 
-              alt="High Performance Tech" 
-              className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[4s] ease-out" 
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" 
+              alt="Global Network of Intelligence" 
+              className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[5s] ease-out" 
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
           </div>
           
           <div className="relative z-10 max-w-2xl">
             <div className="flex items-center gap-4 mb-8 md:mb-10">
-              <div className="h-[1.5px] w-8 md:w-12 bg-accent-green/60"></div>
-              <span className="text-white/80 text-[10px] md:text-[11px] uppercase font-black tracking-[0.4em]">Our Mission</span>
+              <div className="h-[1.5px] w-8 md:w-12 bg-accent-green"></div>
+              <span className="text-white text-[10px] md:text-[11px] uppercase font-black tracking-[0.4em]">Our Mission</span>
             </div>
             
             <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black mb-6 md:mb-10 uppercase italic tracking-tighter leading-[0.8] text-white">
@@ -92,7 +97,7 @@ const Vision: React.FC = () => {
               Performance.
             </h2>
             
-            <p className="text-base md:text-xl text-white/70 leading-relaxed mb-10 md:mb-16 font-medium max-w-lg">
+            <p className="text-base md:text-xl text-white/80 leading-relaxed mb-10 md:mb-16 font-medium max-w-lg">
               Evolution is not a destination. It is the continuous process of shedding the old and integrating the new. At Elevate, we facilitate the shift from doing to being.
             </p>
             
