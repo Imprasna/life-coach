@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevate Life Studio | Master the Art of Living</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'accent-green': '#D4E9D7',
+              'dark-bg': '#0A0A0A',
+              'card-zinc': '#121212',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        color: transparent;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0A0A0A;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #444;
+      }
+      .page-transition {
+        opacity: 0;
+      }
+      .mobile-menu-overlay {
+        clip-path: circle(0% at 100% 0%);
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.28.0",
+    "gsap": "https://esm.sh/gsap@3.12.5",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap/ScrollTrigger@3.12.5",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/"
+  }
+}
+</script>
+  </head>
+  <body class="bg-dark-bg text-white selection:bg-accent-green selection:text-black overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
